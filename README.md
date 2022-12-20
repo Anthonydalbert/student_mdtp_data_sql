@@ -42,4 +42,22 @@ GROUP BY teacher, period
 ORDER BY avg_percent;
 
 ```
+![image](https://user-images.githubusercontent.com/94575481/208776188-496d6353-a1be-4c1d-ae2f-8038fea877d3.png)
+
+3.
+
+```sql
+
+SELECT id, teacher, percent
+FROM mdtp2
+WHERE id IN (
+			SELECT id
+			FROM mdtp2
+			WHERE num_att < 23)
+	AND percent > 50
+ORDER BY percent DESC;
+
+```
+
+![image](https://user-images.githubusercontent.com/94575481/208775549-2e0cf9a9-af40-41f0-b88f-642e76785d10.png)
 
