@@ -5,7 +5,7 @@ Analysis of 9th grade student algebra 1 readiness test data
 Before doing any work, I built a table in PostgreSQL from .csv data I recieved from the school district.
 
 
-Fist I started off by removing unnecessary columns such as student name, class name (everyone is in Algebra 1), and code. I also stripped any identifiers of teacher and students by anonymizing student ids and teacher names (not shown for privacy).
+Initially, I started off by removing unnecessary columns such as student name, class name (everyone is in Algebra 1), and code. I also stripped any identifiers of teachers and students by anonymizing student ids and teacher names (this step is not shown for privacy).
 
 ```sql
 
