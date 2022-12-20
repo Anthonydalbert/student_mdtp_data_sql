@@ -1,8 +1,8 @@
 # Analyzing Student Test Data
 
-Analysis of 9th grade student algebra 1 readiness test data
+Analysis of 9th grade student Algebra 1 Readiness test data.
 
-Before doing any work, I built a table in PostgreSQL from .csv data I recieved from the school district.
+Before doing any EDA, I built a table in PostgreSQL from .csv data I recieved from the school district.
 
 I also built a second table in the database that represents the teacher's schedules.
 
