@@ -4,6 +4,37 @@ Analysis of 9th grade student algebra 1 readiness test data
 
 Before doing any work, I built a table in PostgreSQL from .csv data I recieved from the school district.
 
+I also built a second table in the database that represents the teacher's schedules.
+
+```sql
+
+CREATE TABLE teachers (
+		teacher VARCHAR,
+		period INTEGER,
+		subject VARCHAR);
+		
+INSERT INTO teachers (teacher,period,subject)
+VALUES  ('Daniel, Tony', 3, 'Algebra 1'),
+		('Daniel, Tony', 5, 'Algebra 1 C'),
+		('Thomas, Alice', 2, 'Algebra 1'),
+		('Thomas, Alice', 3, 'Algebra 1'),
+		('Thomas, Alice', 4, 'Algebra 1'),
+		('Thomas, Alice', 5, 'Algebra 1 C'),
+		('Thomas, Alice', 6, 'Algebra 1 C'),
+		('Sans, Rosie', 1, 'Algebra 1'),
+		('Sans, Rosie', 2, 'Algebra 1'),
+		('Sans, Rosie', 3, 'Algebra 1'),
+		('Sans, Rosie', 5, 'Algebra 1'),
+		('Sans, Rosie', 6, 'Algebra 1'),
+		('Jonas, Beau', 3, 'Algebra 1 C'),
+		('Jonas, Beau', 4, 'Algebra 1 C'),
+		('Jillian, Richie', 5, 'Algebra 1'),
+		('Jillian, Richie', 6, 'Algebra 1'),
+		('Gray, Stephanie', 1, 'Algebra 1'),
+		('Gray, Stephanie', 2, 'Algebra 1');
+		
+```
+
 
 Initially, I started off by removing unnecessary columns such as student name, class name (everyone is in Algebra 1), and code. I also stripped any identifiers of teachers and students by anonymizing student ids and teacher names (this step is not shown for privacy).
 
@@ -64,4 +95,21 @@ ORDER BY percent DESC;
 ```
 
 ![image](https://user-images.githubusercontent.com/94575481/208775549-2e0cf9a9-af40-41f0-b88f-642e76785d10.png)
+
+4. Have a look at only the classes that are listed in the master schedule as cotaught.
+
+```sql
+
+SELECT mdtp2.teacher, ROUND(AVG(percent),2) AS avg_score, teachers.period
+FROM mdtp2
+LEFT JOIN teachers
+ON mdtp2.teacher = teachers.teacher
+WHERE subject = 'Algebra 1 C'
+GROUP BY mdtp2.teacher, teachers.period
+ORDER BY avg_score;
+
+```
+
+![image](https://user-images.githubusercontent.com/94575481/208780725-f132c2cb-5984-4c32-833c-33b3af55237e.png)
+
 
