@@ -96,7 +96,7 @@ ORDER BY percent DESC;
 
 ![image](https://user-images.githubusercontent.com/94575481/208775549-2e0cf9a9-af40-41f0-b88f-642e76785d10.png)
 
-4. Have a look at only the classes that are listed in the master schedule as cotaught.
+4. Have a look at only the classes that are listed in the master schedule as cotaught. In order to do so, I had to first merge the test results data table with the teacher table, as you can see below.
 
 ```sql
 
