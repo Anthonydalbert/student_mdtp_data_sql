@@ -100,16 +100,16 @@ ORDER BY percent DESC;
 
 ```sql
 
-SELECT mdtp2.teacher, ROUND(AVG(percent),2) AS avg_score, teachers.period
-FROM mdtp2
-LEFT JOIN teachers
-ON mdtp2.teacher = teachers.teacher
+SELECT m.teacher, ROUND(AVG(percent),2) AS avg_score, t.period
+FROM mdtp2 AS m
+LEFT JOIN teachers AS t
+ON m.teacher = t.teacher
+	AND m.period = t.period
 WHERE subject = 'Algebra 1 C'
-GROUP BY mdtp2.teacher, teachers.period
+GROUP BY m.teacher, t.period
 ORDER BY avg_score;
 
 ```
-
-![image](https://user-images.githubusercontent.com/94575481/208780725-f132c2cb-5984-4c32-833c-33b3af55237e.png)
+![Screenshot 2023-01-11 205605](https://user-images.githubusercontent.com/94575481/211980360-b3e175f0-dc65-4551-8e9b-0d109881c7a5.png)
 
 
